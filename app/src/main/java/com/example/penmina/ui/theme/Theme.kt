@@ -5,26 +5,27 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    primary = Black100,
+    primaryVariant = Black100,
+    secondary = Black100,
+    background = Color.White,
+    surface = Color.White,
+    onBackground = Color.Black,
+    onSurface = Color.Black,
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
-
-    /* Other default colors to override
+    primary = Black100,
+    primaryVariant = White,
+    secondary = White,
     background = Color.White,
     surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
     onBackground = Color.Black,
     onSurface = Color.Black,
-    */
 )
 
 @Composable
@@ -44,4 +45,12 @@ fun JetpackPenminaTheme(
         shapes = Shapes,
         content = content
     )
+
+    //accompanist-systemui
+    var systemUiController = rememberSystemUiController()
+    if (darkTheme) {
+        systemUiController.setStatusBarColor(color = Black100)
+    } else {
+        systemUiController.setStatusBarColor(color = White)
+    }
 }

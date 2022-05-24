@@ -3,21 +3,25 @@ package com.example.penmina
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.navigation.compose.rememberNavController
+import com.example.penmina.navigation.FirstLayerNav
 import com.example.penmina.ui.theme.JetpackPenminaTheme
+import com.example.penmina.ui.theme.RedNormal
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackPenminaTheme {
-                
+                Surface {
+                    val coroutineScope = rememberCoroutineScope()
+                    FirstLayerNav(scope = coroutineScope)
+                }
             }
         }
     }
